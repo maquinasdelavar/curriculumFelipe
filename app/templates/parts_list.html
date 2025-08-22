@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}Peças{% endblock %}
+{% block content %}
+<h2>Peças</h2>
+<form hx-get="/ui/parts" hx-target="#parts" hx-push-url="true">
+	<input name="q" placeholder="Buscar por SKU ou nome" value="{{ q or '' }}" />
+	<button type="submit">Buscar</button>
+</form>
+<table>
+	<thead>
+		<tr>
+			<th>SKU</th>
+			<th>Nome</th>
+			<th>Estoque</th>
+			<th>Preço</th>
+		</tr>
+	</thead>
+	<tbody id="parts">
+	{% for p in parts %}
+		<tr>
+			<td>{{ p.sku }}</td>
+			<td>{{ p.name }}</td>
+			<td>{{ p.stock }}</td>
+			<td>R$ {{ '%.2f'|format(p.sale_price or 0) }}</td>
+		</tr>
+	{% else %}
+		<tr><td colspan="4">Nenhuma peça encontrada</td></tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
