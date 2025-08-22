@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{% block title %}Autopeças{% endblock %}</title>
+	<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+	<link rel="stylesheet" href="https://unpkg.com/@sakun/system.css" />
+	<style>
+		.container{max-width:960px;margin:0 auto;padding:16px}
+		nav a{margin-right:12px}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<nav>
+			<a href="/">Dashboard</a>
+			<a href="/ui/parts">Peças</a>
+		</nav>
+		<hr/>
+		{% block content %}{% endblock %}
+	</div>
+</body>
+</html>
